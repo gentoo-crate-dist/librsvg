@@ -1,3 +1,13 @@
+Version 2.62.92
+===============
+
+- #1224 - Raise the maximum nesting depth of layers for glibc systems.
+  The maximum on glibc is now 500 nested layers; the maximum for musl
+  systems remains at 50 layers.  This is due to the amount of stack
+  space required, since musl has a reduced default stack compared to
+  glibc.
+
+
 Version 2.62.91
 ===============
 
