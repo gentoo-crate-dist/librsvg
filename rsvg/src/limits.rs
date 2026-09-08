@@ -53,4 +53,11 @@ pub const MAX_FILE_LOADING_DEPTH: usize = 20;
 ///
 /// This is a mitigation for malicious SVGs which try to have layers that are nested
 /// extremely deep, as this could cause stack exhaustion.
+///
+/// See bug #1224 for why this is different between glibc and musl: the latter has a small
+/// stack size by default, so we set a lower limit for recursion with nested layers.
+#[cfg(not(all(target_os = "linux", target_env = "musl")))]
+pub const MAX_LAYER_NESTING_DEPTH: u16 = 500;
+
+#[cfg(all(target_os = "linux", target_env = "musl"))]
 pub const MAX_LAYER_NESTING_DEPTH: u16 = 50;
