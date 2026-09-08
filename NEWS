@@ -1,11 +1,31 @@
-Version 2.62.92
-===============
+Version 2.63.0
+==============
+
+librsvg crate version 2.63.0
+
+librsvg-rebind crate version 0.3.0
+
+- #1220 and #1224 - Limit the depth of files that reference other
+  files, via XML XInclude, inter-document references, and CSS
+  includes.  The Rust API has a new
+  ImplementationLimit::MaximumFileNestingDepthExceeded error variant
+  to surface this to the loading functions.
+
+- #1142: Fix blurry embeded SVG images by rasterizing them at 
+  device resolution (Dylan Sechet).
+
+- #1093 - Remove loading limits from image-rs.  This means that raster
+  images, when embedded in SVG documents, have no limits for their
+  size or memory consumption.  The idea, for now, is that
+  security-sensitive applications that use librsvg should do their own
+  sandboxing if they want to impose memory limits.
 
 - #1224 - Raise the maximum nesting depth of layers for glibc systems.
   The maximum on glibc is now 500 nested layers; the maximum for musl
   systems remains at 50 layers.  This is due to the amount of stack
   space required, since musl has a reduced default stack compared to
-  glibc.
+  glibc.  Please see the comments in that bug if you would like to
+  help with the musl situation.
 
 
 Version 2.62.91
