@@ -225,6 +225,8 @@ cargo test - opensuse@aarch64:
     policy: pull-push
 
 meson build - gnomeos.nightly@x86_64:
+  variables:
+    RUST_MIN_STACK: 8388608
   extends:
     - ".container.gnomeos.nightly@x86_64"
     - .fdo.distribution-image@gnomeos
@@ -236,6 +238,8 @@ meson build - gnomeos.nightly@x86_64:
       artifacts: false
 
 meson build - gnomeos.stable@x86_64:
+  variables:
+    RUST_MIN_STACK: 8388608
   extends:
     - ".container.gnomeos.stable@x86_64"
     - .fdo.distribution-image@gnomeos
