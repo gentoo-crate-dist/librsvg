@@ -13,7 +13,7 @@
 <!--
   run `rsvg-convert -v` in your terminal to see the current version.
 
-  Note that only 2.61.x and 2.62.x versions are supported.
+  Note that only 2.62.x and 2.63.x versions are supported.
 -->
 
 ## Platform
